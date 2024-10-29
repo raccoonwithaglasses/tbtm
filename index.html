@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="player">
+        <div class="imgbox">
+            <img src="thesmithsbus.jpg" alt="bus">
+        </div>
+    </div>
+    
+    <audio id="audioPlayer" src="lightnevergoesout.mp3" controls></audio>
+
+    <div class="scroll-image">
+        <img src="bemyb.jpg" alt="bemy">
+    </div>
+    
+    <audio id="audioPlayer2" src="bemybabyronettes.mp3" controls></audio>
+
+    <p id="displayText" style="display: none; position: absolute; top: 30%; left: 45%; font-family: verdana; 
+    font-size: 22px; color: rgb(28, 6, 68);">And if a double-decker bus crashes into us <br>
+        To die by your side <br>
+        Is such a heavenly way to die</p>
+    
+    <p id="secondText" style="display: none; position: absolute; top: 50%; left: 45%; font-family: verdana; 
+    font-size: 22px; color: rgb(28, 6, 68);">And if a ten ton truck kills the both of us <br>
+        To die by your side <br> Well, the pleasure, the privilege is mine</p>
+
+    <p id="thirdText" style="display: none; position: absolute; top: 135%; left: 45%; font-family: verdana;
+    font-size: 22px; color: rgb(28, 6, 68);">So won't you, please</p>
+    <p id="fourthText" style="display: none; position: absolute; top: 140%; left: 45%; font-family: verdana;
+    font-size: 22px; color: rgb(28, 6, 68);">Be my, be my baby</p>
+    <p id="fifthText" style="display: none; position: absolute; top: 145%; left: 45%; font-family: verdana;
+    font-size: 22px; color: rgb(28, 6, 68);">Be my baby (My one and only baby) </p>
+    <p id="sixthText" style="display: none; position: absolute; top: 150%; left: 45%; font-family: verdana;
+    font-size: 22px; color: rgb(28, 6, 68);">Say you'll be my darlin' (My one and only baby) </p>
+
+    <style>
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .fade-in {
+            display: block;
+            animation: fadeIn 2s;
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+      const audio = document.getElementById("audioPlayer");
+const text1 = document.getElementById("displayText");
+const text2 = document.getElementById("secondText");
+const text3 = document.getElementById("thirdText");
+
+const startTime1 = 150; 
+const endTime1 = 180; 
+const startTime2 = 165; 
+const endTime2 = 180; 
+
+audio.addEventListener("play", () => {
+    audio.currentTime = startTime1; 
+});
+
+audio.addEventListener("timeupdate", () => {
+    if (audio.currentTime >= startTime1 && audio.currentTime < endTime1) {
+        text1.style.display = "block"; 
+        text1.classList.add("fade-in");
+    } else {
+        text1.classList.remove("fade-in");
+        text1.style.display = "none";
+    }
+
+    if (audio.currentTime >= startTime2 && audio.currentTime < endTime2) {
+        text2.style.display = "block"; 
+        text2.classList.add("fade-in");
+    } else {
+        text2.classList.remove("fade-in");
+        text2.style.display = "none";
+    }
+
+    if (audio.currentTime >= endTime2) {
+        audio.pause();
+    }
+});
+
+
+const audio2 = document.getElementById("audioPlayer2");
+
+const startTime3 = 36; 
+const endTime3 = 52; 
+
+audio2.addEventListener("play", () => {
+    audio2.currentTime = startTime3; // Set the audio to start time
+    text3.style.display = "block"; // Show the third text
+    text3.classList.add("fade-in"); // Add fade-in class
+});
+
+audio2.addEventListener("timeupdate", () => {
+    if (audio2.currentTime >= endTime3) {
+        audio2.pause(); // Pause the audio when it reaches the end time
+        text3.classList.remove("fade-in"); // Remove fade-in class
+        text3.style.display = "none"; // Hide the text after the audio ends
+    }
+});
+
+const text4 = document.getElementById("fourthText");
+
+const startTime4 = 38; 
+const endTime4 = 52; 
+
+audio2.addEventListener("timeupdate", () => {
+  if (audio2.currentTime >= startTime4 && audio2.currentTime < endTime4) {
+      text4.style.display = "block"; 
+      text4.classList.add("fade-in");
+  } else {
+      text4.classList.remove("fade-in");
+      text4.style.display = "none";
+  }
+
+  if (audio2.currentTime >= endTime3) {
+      audio2.pause(); 
+  }
+});
+
+const text5 = document.getElementById("fifthText");
+
+const startTime5 = 40; 
+const endTime5 = 52; 
+
+audio2.addEventListener("timeupdate", () => {
+  
+  
+  if (audio2.currentTime >= startTime5 && audio2.currentTime < endTime5) {
+      text5.style.display = "block"; 
+      text5.classList.add("fade-in");
+  } else {
+      text5.classList.remove("fade-in");
+      text5.style.display = "none";
+  }
+
+  if (audio2.currentTime >= endTime3) {
+      audio2.pause(); // Pause the audio when it reaches the end time
+  }
+});
+
+const text6 = document.getElementById("sixthText");
+
+const startTime6 = 43; 
+const endTime6 = 52; 
+
+audio2.addEventListener("timeupdate", () => {
+  
+  
+  if (audio2.currentTime >= startTime6 && audio2.currentTime < endTime6) {
+      text6.style.display = "block"; 
+      text6.classList.add("fade-in");
+  } else {
+      text6.classList.remove("fade-in");
+      text6.style.display = "none";
+  }
+
+  if (audio2.currentTime >= endTime3) {
+      audio2.pause(); // Pause the audio when it reaches the end time
+  }
+});
+
+    </script>
+
+    <script>
+      function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          return (
+              rect.top >= 0 &&
+              rect.left >= 0 &&
+              rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+              rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+      }
+
+      window.addEventListener('scroll', () => {
+          const scrollImage = document.querySelector('.scroll-image');
+          if (isElementInViewport(scrollImage)) {
+              scrollImage.classList.add('show');
+          }
+      });
+    </script>
+</body>
+</html>
